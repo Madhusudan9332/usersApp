@@ -11,7 +11,13 @@ mongoose
 
 
 app = express();
-app.use(cors())
+// Allow CORS for a specific origin
+app.use(cors({
+  origin: 'https://form-ic-and-yup.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
